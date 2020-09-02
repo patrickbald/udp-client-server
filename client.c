@@ -83,10 +83,7 @@ int main(int argc, char *argv[]){
     char file_input[BUFSIZ];
     FILE *fp;
     struct stat path_stat;
-    if(stat(argv[3], &path_stat) == -1){
-        perror("Stat failure\n");
-        exit(1);
-    }
+    stat(argv[3], &path_stat);
 
     if(S_ISREG(path_stat.st_mode)){
         fp = fopen(argv[3], "r");
@@ -98,10 +95,8 @@ int main(int argc, char *argv[]){
             msg = file_input;
         }
     } else {
-        printf("string input\n");
         msg = argv[3];
     }
-
     
     /* Encrypt message */ 
     char* encrypted_msg = encrypt(msg, server_public_key);

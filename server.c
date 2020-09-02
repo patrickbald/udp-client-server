@@ -57,7 +57,6 @@ int main(int argc, char *argv[]){
 		}
 
 		/* encrypt server key */
-		printf("Encrypting server key...\n");
 		char* encrypted_server_key;
 		encrypted_server_key = encrypt(server_key, client_pub_key);
 
